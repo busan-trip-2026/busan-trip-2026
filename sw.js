@@ -1,5 +1,5 @@
 // 共享行程 PWA：快取 App 外殼，沒網路時也能打開（行程資料由 App 自己存在手機裡）
-const C = 'trip-shell-v3';
+const C = 'trip-shell-v4';
 const SHELL = ['./', './index.html', './manifest.webmanifest', './icon-180.png', './icon-512.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(C).then(c => c.addAll(SHELL))); self.skipWaiting(); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== C).map(k => caches.delete(k))))); self.clients.claim(); });
